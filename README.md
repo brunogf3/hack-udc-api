@@ -46,7 +46,8 @@ El proyecto está optimizado para funcionar 24/7 en **Render.com**:
 * `GET /stock/{symbol}`: Obtiene análisis histórico + predicción IA a 7 días.
 * `POST /insert-manual`: Permite al usuario inyectar datos propios (tickers personalizados) que persisten en la memoria del servidor.
 * `GET /compare`: Algoritmo de comparación que determina cuál de dos activos tiene un mejor rendimiento proyectado.
+* `GET /predict/{symbol}` **Core de IA.** Genera una predicción de precios para los próximos 7 días, incluyendo métricas de error y niveles de confiabilidad (Alta/Media/Baja).
 
----
+
 
 **Desarrollado para HackUDC 2026 - Una solución escalable para el análisis de mercados financieros.**
