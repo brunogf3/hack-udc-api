@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+gunicorn
+pandas
+numpy
+scikit-learn
+typing
+pydanic
+streamlit
+requests
+os
+twelvedata
+plotly.express
+prophet
+dotenv
+logging
+CORSMiddleware

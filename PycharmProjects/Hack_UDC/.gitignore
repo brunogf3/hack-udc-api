@@ -1,0 +1,18 @@
+# Entornos virtuales (Muy pesados, no se suben)
+.venv/
+venv/
+env/
+
+# Caché de Python (Archivos temporales que crea el PC al ejecutar)
+__pycache__/
+*.pyc
+
+# Configuración de PyCharm (Tu configuración personal de pantalla/proyectos)
+.idea/
+
+# Archivos de variables de entorno (Aquí van tus API KEYS, ¡NUNCA los subas!)
+.env
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
