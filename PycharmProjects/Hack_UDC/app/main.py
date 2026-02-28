@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from pydantic import BaseModel
 import uvicorn
-import api_engine as engine
+from app import api_engine as engine
 import pandas as pd
 
 # Creamos el objeto
