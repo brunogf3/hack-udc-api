@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 
 # Configuración de la API
-API_URL = "http://127.0.0.1:8005"
+API_URL = "https://hack-udc-api-1.onrender.com"
 
 st.set_page_config(page_title="IA de stock - Dashboard", layout="wide", initial_sidebar_state="expanded")
 

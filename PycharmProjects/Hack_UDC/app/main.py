@@ -6,6 +6,8 @@ from pydantic import BaseModel
 import uvicorn
 from app import api_engine as engine
 import pandas as pd
+import os
+
 
 # Creamos el objeto
 app = FastAPI(
@@ -118,52 +120,10 @@ async def insert_manual(request: EmpresaManualRequest):
 
     return resultado
 
+# FUNCION DE EJECUCIÓN RENDER
 
-# --- UTILIDADES DE EJECUCIÓN AUTOMÁTICA ---
-import os
-import signal
-import psutil
-import subprocess
-import threading
-import time
-
-
-def kill_port_process(port):
-    """Busca y finaliza cualquier proceso que esté bloqueando el puerto 8005."""
-    for proc in psutil.process_iter(['pid', 'name']):
-        try:
-            for conn in proc.connections(kind='inet'):
-                if conn.laddr.port == port:
-                    print(
-                        f"--- Puerto {port} ocupado por {proc.info['name']} (PID: {proc.info['pid']}). Limpiando... ---")
-
-
-                    proc.terminate()
-
-
-
-                    time.sleep(2)
-        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-            pass
-
-
-def run_streamlit():
-    """Lanza el Dashboard automáticamente."""
-    time.sleep(5)  # Espera a que la API esté lista
-    print("--- Iniciando Dashboard de Streamlit... ---")
-    subprocess.run(["streamlit", "run", "dashboard.py"])
-
-
-# --- PUNTO DE ENTRADA ÚNICO ---
 if __name__ == "__main__":
-    puerto_api = 8005
-
-    # 1. Limpiamos el puerto por si quedó bloqueado en una ejecución anterior
-    kill_port_process(puerto_api)
-
-    # 2. Lanzamos el Dashboard en un hilo separado para no bloquear la API
-    threading.Thread(target=run_streamlit, daemon=True).start()
-
-    # 3. Arrancamos el servidor FastAPI
-    print(f"--- Iniciando API en http://127.0.0.1:{puerto_api} ---")
-    uvicorn.run(app, host="127.0.0.1", port=puerto_api)
+    import uvicorn
+    # En Render, el puerto lo da la variable de entorno PORT
+    port = int(os.environ.get("PORT", 8005))
+    uvicorn.run(app, host="0.0.0.0", port=port)
