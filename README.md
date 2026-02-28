@@ -1,4 +1,4 @@
-# StudyStock: Terminal de Análisis Financiero con IA 🤖
+# StudyStock: Terminal de Análisis Financiero con IA
 
 **StudyStock** es una plataforma avanzada de análisis bursátil diseñada para el ecosistema de trading moderno. Combina la agilidad de una API REST de alto rendimiento con un motor de 
 Inteligencia Artificial capaz de predecir tendencias de mercado y un Dashboard interactivo para la visualización de datos complejos.
