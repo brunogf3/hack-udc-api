@@ -50,6 +50,9 @@ El proyecto está optimizado para funcionar 24/7 en **Render.com**. Se han despl
 * `GET /compare`: Algoritmo de comparación que determina cuál de dos activos tiene un mejor rendimiento proyectado.
 * `GET /predict/{symbol}` **Core de IA.** Genera una predicción de precios para los próximos 7 días, incluyendo métricas de error y niveles de confiabilidad (Alta/Media/Baja).
 
+<img width="1889" height="891" alt="image" src="https://github.com/user-attachments/assets/097b8877-17ea-4d8b-9632-bbfa542e1bd5" />
+<img width="1903" height="886" alt="proyecto_hack1" src="https://github.com/user-attachments/assets/d12dd127-b57e-432b-bf6b-dfab51bf7a68" />
+
 
 
 **Desarrollado para HackUDC 2026 - Una solución escalable para el análisis de mercados financieros.**
