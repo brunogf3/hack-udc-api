@@ -32,14 +32,16 @@ A diferencia de las consultas tradicionales, StudyStock ofrece un análisis pred
 
 ## Despliegue y Configuración en la Nube (Render)
 
-El proyecto está optimizado para funcionar 24/7 en **Render.com**:
+El proyecto está optimizado para funcionar 24/7 en **Render.com**. Se han desplegado **dos servicios independientes** que colaboran entre sí:
 
-* **Runtime**: Python 3.14.3.
-* **Build Command**: `pip install -r requirements.txt`.
-* **Start Command**: `gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app`.  (Se utiliza Gunicorn para manejar el tráfico de red de forma eficiente y segura en producción.)
-* **Variables de Entorno**: La `TWELVE_DATA_KEY` se configura de forma aislada en el panel de Render, manteniendo la seguridad del repositorio de GitHub. Esta                                 clave se consigue registrándose en su página web.
+### A. Servicio Backend (API)
+* **Start Command**: `gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app`
+* **Función**: Procesa los datos y ejecuta los modelos de IA.
 
-
+### B. Servicio Frontend (Dashboard)
+* **Start Command**: `streamlit run app/dashboard.py`
+* **Configuración**: El Dashboard apunta a la URL pública del Backend, permitiendo una experiencia de usuario fluida desde cualquier navegador.
+* **Variables de Entorno**: Se utiliza la gestión de secretos de Render para la `TWELVE_DATA_KEY`.
 
 ## Endpoints Principales
 
