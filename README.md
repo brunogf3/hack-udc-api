@@ -37,7 +37,7 @@ El proyecto está optimizado para funcionar 24/7 en **Render.com**:
 * **Runtime**: Python 3.14.3.
 * **Build Command**: `pip install -r requirements.txt`.
 * **Start Command**: `gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app`.  (Se utiliza Gunicorn para manejar el tráfico de red de forma eficiente y segura en producción.)
-* **Variables de Entorno**: La `TWELVE_DATA_KEY` se configura de forma aislada en el panel de Render, manteniendo la seguridad del repositorio de GitHub.
+* **Variables de Entorno**: La `TWELVE_DATA_KEY` se configura de forma aislada en el panel de Render, manteniendo la seguridad del repositorio de GitHub. Esta                                 clave se consigue registrándose en su página web.
 
 
 
