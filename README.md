@@ -11,7 +11,7 @@ El proyecto está organizado siguiendo el patrón de **paquetes de Python**, lo 
 ### Directorio de Aplicación (`/app`)
 Para facilitar el despliegue en la nube, todo el código fuente reside en la carpeta `/app`.
 * **`__init__.py`**: Archivo crítico para el despliegue en **Render**. Su presencia permite que el servidor de producción trate a la carpeta como un paquete, resolviendo errores de importación de módulos internos (`ModuleNotFoundError`).
-* **`main.py`**: Punto de entrada de la API (FastAPI). Gestiona los endpoints de consulta de stocks, inserción manual de datos y comparación de activos. Incluye configuración de **CORS** para permitir la comunicación bidireccional con el Dashboard.
+* **`main.py`**: Punto de entrada de la API (FastAPI). Gestiona los endpoints de consulta de stocks, inserción manual de datos (tanto locales como de la API Twelve Data) y comparación de activos. Incluye configuración de **CORS** para permitir la comunicación bidireccional con el Dashboard.
 * **`api_engine.py`**: El núcleo lógico. Integra la librería **Prophet (de Meta)** para predicciones. Implementa un algoritmo híbrido que prioriza datos locales (inyectados por el usuario) frente a datos globales de la API de **Twelve Data**.
 
 ### Archivos de Configuración (Raíz)
@@ -44,7 +44,7 @@ El proyecto está optimizado para funcionar 24/7 en **Render.com**:
 ## Endpoints Principales
 
 * `GET /stock/{symbol}`: Obtiene análisis histórico + predicción IA a 7 días.
-* `POST /insert-manual`: Permite al usuario inyectar datos propios (tickers personalizados) que persisten en la memoria del servidor.
+* `POST /insert-manual`: Permite al usuario inyectar datos propios (tickers personalizados) que persisten en la memoria del servidor, y pueden ser comparados o                             especulados como un tiker de la API Twelve Keys. La comparación con tikers de la API también es compatible.
 * `GET /compare`: Algoritmo de comparación que determina cuál de dos activos tiene un mejor rendimiento proyectado.
 * `GET /predict/{symbol}` **Core de IA.** Genera una predicción de precios para los próximos 7 días, incluyendo métricas de error y niveles de confiabilidad (Alta/Media/Baja).
 
